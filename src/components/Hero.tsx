@@ -1,11 +1,11 @@
 export default function Hero() {
   return (
     <section className="min-h-screen flex flex-col pt-20">
-      {/* Main content row */}
-      <div className="flex-1 grid grid-cols-12 px-8 items-center">
+      {/* Mobile: flex-col stack | Desktop: 3-col grid */}
+      <div className="flex-1 flex flex-col md:grid md:grid-cols-12 px-8">
 
-        {/* Left — Name + status */}
-        <div className="col-span-4 self-end pb-16">
+        {/* Name + status */}
+        <div className="pt-10 md:pt-0 md:col-span-4 md:self-end md:pb-16">
           <h1 className="text-sm font-medium text-ink leading-tight mb-1">
             Adam Schaban
           </h1>
@@ -14,33 +14,28 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Center — Abstract organic shapes */}
-        <div className="col-span-4 flex items-center justify-center py-16 select-none pointer-events-none">
+        {/* SVG — desktop only */}
+        <div className="hidden md:flex md:col-span-4 items-center justify-center py-16 select-none pointer-events-none">
           <svg
             viewBox="0 0 400 500"
             className="w-full max-w-xs opacity-15"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Large outer circle */}
             <circle cx="200" cy="260" r="190" stroke="#111" strokeWidth="1" />
-            {/* Medium circle top-left */}
             <circle cx="100" cy="160" r="120" stroke="#111" strokeWidth="1" />
-            {/* Small circle top-right */}
             <circle cx="290" cy="120" r="70" stroke="#111" strokeWidth="1" />
-            {/* Tiny circle bottom-right */}
             <circle cx="320" cy="340" r="45" stroke="#111" strokeWidth="1" />
-            {/* Medium circle bottom-left */}
             <circle cx="90" cy="370" r="90" stroke="#111" strokeWidth="1" />
-            {/* Inner overlap circle */}
             <circle cx="200" cy="230" r="110" stroke="#111" strokeWidth="1" />
           </svg>
         </div>
 
-        {/* Right — Description */}
-        <div className="col-span-4 self-start pt-24">
+        {/* Description — fills remaining space on mobile, top-right on desktop */}
+        <div className="flex-1 flex items-center py-12 md:py-0 md:block md:col-span-4 md:self-start md:pt-24">
           <p className="text-2xl font-medium text-ink leading-snug">
-            Designing human-centered experiences at the intersection of sports, culture, and connection.
+            Designing human-centered experiences at the intersection of sports,
+            culture, and connection.
           </p>
         </div>
       </div>

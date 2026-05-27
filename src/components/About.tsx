@@ -1,11 +1,12 @@
 export default function About() {
   return (
     <section className="px-8 py-16 min-h-[calc(100vh-4rem)]">
-      {/* Two-column: photo left, bio right */}
-      <div className="grid grid-cols-12 gap-8 mb-24 items-end">
+      {/* Mobile: stacked | Desktop: 2-col grid */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 mb-24 md:items-end">
+
         {/* Photo */}
-        <div className="col-span-5">
-          <div className="aspect-[3/4] overflow-hidden">
+        <div className="md:col-span-5">
+          <div className="aspect-[3/4] max-w-[260px] md:max-w-none overflow-hidden">
             <img
               src="/headshot.jpg"
               alt="Adam Schaban"
@@ -14,8 +15,8 @@ export default function About() {
           </div>
         </div>
 
-        {/* Bio */}
-        <div className="col-span-7 flex flex-col items-end text-right pb-4">
+        {/* Bio — left-aligned on mobile, right-aligned on desktop */}
+        <div className="md:col-span-7 flex flex-col md:items-end md:text-right pb-4">
           <p className="text-[10px] tracking-widest uppercase text-ink-muted mb-6">
             About
           </p>

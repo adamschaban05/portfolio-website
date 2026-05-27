@@ -18,21 +18,21 @@ export default function WorkTable() {
   return (
     <section className="min-h-[calc(100vh-4rem)] flex flex-col justify-center px-8 py-16">
       <div className="ml-auto w-full md:w-3/5 md:pr-8">
+
         {/* Header */}
         <div className="grid grid-cols-12 gap-4 mb-3 pb-3 border-b border-black/10">
-          {[
-            { label: "No", span: "col-span-1" },
-            { label: "Title", span: "col-span-6" },
-            { label: "Type", span: "col-span-3" },
-            { label: "Time", span: "col-span-2 text-right" },
-          ].map(({ label, span }) => (
-            <span
-              key={label}
-              className={`${span} text-[10px] tracking-widest uppercase text-ink-muted`}
-            >
-              {label}
-            </span>
-          ))}
+          <span className="col-span-2 md:col-span-1 text-[10px] tracking-widest uppercase text-ink-muted">
+            No
+          </span>
+          <span className="col-span-7 md:col-span-6 text-[10px] tracking-widest uppercase text-ink-muted">
+            Title
+          </span>
+          <span className="hidden md:block md:col-span-3 text-[10px] tracking-widest uppercase text-ink-muted">
+            Type
+          </span>
+          <span className="col-span-3 md:col-span-2 text-[10px] tracking-widest uppercase text-ink-muted text-right">
+            Time
+          </span>
         </div>
 
         {/* Rows */}
@@ -48,16 +48,16 @@ export default function WorkTable() {
               activeId && activeId !== project.id ? "opacity-30" : "opacity-100"
             }`}
           >
-            <span className="col-span-1 text-xs tabular-nums text-ink-muted">
+            <span className="col-span-2 md:col-span-1 text-xs tabular-nums text-ink-muted">
               {String(project.id).padStart(2, "0")}
             </span>
-            <span className="col-span-6 text-sm text-ink font-medium">
+            <span className="col-span-7 md:col-span-6 text-sm text-ink font-medium">
               {project.title}
             </span>
-            <span className="col-span-3 text-xs text-ink-muted uppercase tracking-wide self-center">
+            <span className="hidden md:block md:col-span-3 text-xs text-ink-muted uppercase tracking-wide self-center">
               {project.type}
             </span>
-            <span className="col-span-2 text-xs text-ink-muted self-center tabular-nums text-right">
+            <span className="col-span-3 md:col-span-2 text-xs text-ink-muted self-center tabular-nums text-right">
               {project.time}
             </span>
           </a>
