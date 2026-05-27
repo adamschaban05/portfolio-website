@@ -46,7 +46,7 @@ export default function Nav() {
 
         {/* Right */}
         <a
-          href="/resume.pdf"
+          href="/Design%20Resume%20(1).pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs tracking-widest uppercase text-ink hover:text-ink-muted transition-colors"

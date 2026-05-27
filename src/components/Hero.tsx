@@ -40,9 +40,7 @@ export default function Hero() {
         {/* Right — Description */}
         <div className="col-span-4 self-start pt-24">
           <p className="text-2xl font-medium text-ink leading-snug">
-            <span className="font-bold">Developer & designer</span>{" "}
-            building thoughtful, user-first digital experiences grounded in
-            craft, clarity, and code.
+            Designing human-centered experiences at the intersection of sports, culture, and connection.
           </p>
         </div>
       </div>

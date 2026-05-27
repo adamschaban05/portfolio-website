@@ -9,7 +9,7 @@ export default function About() {
             <img
               src="/headshot.jpg"
               alt="Adam Schaban"
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
