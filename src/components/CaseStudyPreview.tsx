@@ -381,21 +381,32 @@ export default function CaseStudyPreview() {
       </div>
 
       {/* Bottom tab strip */}
-      <div className="flex border-t border-black/8">
-        {featured.map((project, i) => (
-          <button
-            key={project.id}
-            onClick={() => setActive(i)}
-            className={`flex-1 md:flex-none px-8 py-5 text-left transition-colors duration-150
-              ${i < featured.length - 1 ? "border-r border-black/8" : ""}
-              ${active === i ? "bg-white" : "bg-[#fafafa] hover:bg-white"}`}
-          >
-            <span className={`text-[10px] tracking-widest uppercase transition-colors
-              ${active === i ? "text-ink font-semibold" : "text-ink-faint"}`}>
+      <div className="flex gap-8 px-8 border-t border-black/8">
+        {featured.map((project, i) =>
+          project.external ? (
+            <a
+              key={project.id}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onMouseEnter={() => setActive(i)}
+              className={`py-5 text-[10px] tracking-widest uppercase transition-colors duration-150
+                ${active === i ? "text-ink border-b-2 border-ink" : "text-ink-faint hover:text-ink-muted"}`}
+            >
               {project.title}
-            </span>
-          </button>
-        ))}
+            </a>
+          ) : (
+            <Link
+              key={project.id}
+              href={project.href}
+              onMouseEnter={() => setActive(i)}
+              className={`py-5 text-[10px] tracking-widest uppercase transition-colors duration-150
+                ${active === i ? "text-ink border-b-2 border-ink" : "text-ink-faint hover:text-ink-muted"}`}
+            >
+              {project.title}
+            </Link>
+          )
+        )}
       </div>
     </section>
   );
