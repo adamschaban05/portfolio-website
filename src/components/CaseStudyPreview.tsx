@@ -340,64 +340,62 @@ export default function CaseStudyPreview() {
 
   return (
     <section className="min-h-screen flex flex-col">
-      <div className="flex flex-col flex-1">
-        {/* Preview area */}
-        <div className="flex-1 flex overflow-hidden" style={{ minHeight: "70vh" }}>
-          <PreviewComponent />
+      {/* Mobile: info strip above preview */}
+      <div className="md:hidden flex items-center justify-between px-8 py-5 border-b border-black/8">
+        <div>
+          <p className="text-[10px] tracking-widest uppercase text-ink-faint mb-0.5">{current.num}</p>
+          <p className="text-sm font-medium text-ink">{current.title}</p>
+          <p className="text-xs text-ink-muted">{current.sub}</p>
+        </div>
+        {current.external ? (
+          <a href={current.href} target="_blank" rel="noopener noreferrer"
+             className="text-sm text-ink hover:text-ink-muted transition-colors">→</a>
+        ) : (
+          <Link href={current.href}
+                className="text-sm text-ink hover:text-ink-muted transition-colors">→</Link>
+        )}
+      </div>
+
+      {/* Main row: sidebar + preview */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Left sidebar — desktop only */}
+        <div className="hidden md:flex w-[220px] flex-shrink-0 flex-col justify-between border-r border-black/8 px-8 pt-10 pb-8">
+          <div>
+            <p className="text-[10px] tracking-widest uppercase text-ink-faint mb-1">{current.num}</p>
+            <h2 className="text-sm font-medium text-ink mb-1 leading-snug">{current.title}</h2>
+            <p className="text-xs text-ink-muted">{current.sub}</p>
+          </div>
+          {current.external ? (
+            <a href={current.href} target="_blank" rel="noopener noreferrer"
+               className="text-sm text-ink hover:text-ink-muted transition-colors">→</a>
+          ) : (
+            <Link href={current.href}
+                  className="text-sm text-ink hover:text-ink-muted transition-colors">→</Link>
+          )}
         </div>
 
-        {/* Bottom tab bar */}
-        <div className="flex items-stretch border-t border-black/8">
-          {featured.map((project, i) => (
-            <button
-              key={project.id}
-              onClick={() => setActive(i)}
-              className={`flex-1 flex flex-row md:flex-col items-center md:items-start justify-between md:justify-center
-                          px-6 md:px-8 py-4 md:py-5 transition-colors duration-150 text-left
-                          ${i < featured.length - 1 ? "border-r border-black/8" : ""}
-                          ${active === i ? "bg-white" : "bg-[#fafafa] hover:bg-white"}`}
-            >
-              <div className="flex flex-col">
-                <span
-                  className={`text-[10px] tracking-widest uppercase mb-0.5 ${
-                    active === i ? "text-ink-muted" : "text-ink-faint"
-                  }`}
-                >
-                  {project.num}
-                </span>
-                <span
-                  className={`text-sm font-medium leading-snug ${
-                    active === i ? "text-ink" : "text-ink-muted"
-                  }`}
-                >
-                  {project.title}
-                </span>
-                <span className="text-xs text-ink-muted hidden md:block">{project.sub}</span>
-              </div>
-              {active === i && (
-                project.external ? (
-                  <a
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-sm text-ink hover:text-ink-muted transition-colors mt-0 md:mt-3"
-                  >
-                    →
-                  </a>
-                ) : (
-                  <Link
-                    href={project.href}
-                    onClick={(e) => e.stopPropagation()}
-                    className="text-sm text-ink hover:text-ink-muted transition-colors mt-0 md:mt-3"
-                  >
-                    →
-                  </Link>
-                )
-              )}
-            </button>
-          ))}
+        {/* Preview */}
+        <div className="flex-1 flex overflow-hidden">
+          <PreviewComponent />
         </div>
+      </div>
+
+      {/* Bottom tab strip */}
+      <div className="flex border-t border-black/8">
+        {featured.map((project, i) => (
+          <button
+            key={project.id}
+            onClick={() => setActive(i)}
+            className={`flex-1 md:flex-none px-8 py-5 text-left transition-colors duration-150
+              ${i < featured.length - 1 ? "border-r border-black/8" : ""}
+              ${active === i ? "bg-white" : "bg-[#fafafa] hover:bg-white"}`}
+          >
+            <span className={`text-[10px] tracking-widest uppercase transition-colors
+              ${active === i ? "text-ink font-semibold" : "text-ink-faint"}`}>
+              {project.title}
+            </span>
+          </button>
+        ))}
       </div>
     </section>
   );
